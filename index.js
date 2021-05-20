@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var firebase = require('firebase')
+var Firebase = require('firebase')
 
 
 app.use(express.static(__dirname + '/views'));
@@ -23,10 +23,9 @@ app.get('/', function(req, res) {
 });
 
 app.post('/updateled',(req,res)=> {
-  ar userRef = usersRef.push({
-    name: 
-   });
-
+  usersRef.set({
+    BUZZER: 0 
+  });
 })
 
 app.listen(8080);
