@@ -6,6 +6,7 @@
   <title>Calculator</title>
   <link href="style.css" rel="stylesheet">
   <script src="script.js" defer></script>
+  <link rel="stylesheet" href="text.css">
 </head>
 <body>
   <div class="calculator-grid">
@@ -14,30 +15,80 @@
 <div id="countdowntimer">
   <button id="Start" onclick="timer();">Start Timer</button>
 
-  D:<input type="text" id="days" value="0" /> 
-  H:<input type="text" id="hours" value="0" /> 
-  M:<input type="text" id="minutes" value="0" />
-  S:<input type="text" id="seconds" value="0" /><br>
+  D:<input type="text" id="days1" value="0" /> 
+  H:<input type="text" id="hours1" value="0" /> 
+  M:<input type="text" id="minutes1" value="0" />
+  S:<input type="text" id="seconds1" value="0" /><br>
 
   <div id="display"></div>
 
   <div id="message"></div>
 </div>
   <button data-all-clear class="span-two" onclick="reset();">Reset</button>
-  <p id="demo"></p>
+  <div class="container">
+          <div style="width: 130px;" class="box">
+            <h3 id="daystxt">Days</h2>
+            <h1 id="days">000</h1>
+        </div>
+        <div class="box">
+            <h3 id="hourstxt">Hours</h2>
+            <h1 id="hours">00</h1>
+        </div>
+        <div class="box">
+            <h3 id="minutestxt">Minutes</h2>
+            <h1 id="minutes">00</h1>
+        </div>
+        <div class="box">
+            <h3 id="secondstxt">Secondes</h2>
+            <h1 id="seconds">00</h1>
+        </div>
+    </div>
+  </div>
   <script>
   function reset(){
       var Reset = true;
   }
   function timer(){
-    var d = parseInt(document.getElementById("days").value, 0);
-    var h = parseInt(document.getElementById("hours").value, 0);
-    var m = parseInt(document.getElementById("minutes").value, 0);
-    var s = parseInt(document.getElementById("seconds").value, 0);
+    var d = parseInt(document.getElementById("days1").value, 0);
+    var h = parseInt(document.getElementById("hours1").value, 0);
+    var m = parseInt(document.getElementById("minutes1").value, 0);
+    var s = parseInt(document.getElementById("seconds1").value, 0);
 
-    current = (((d * 86400) + (h * 3600) + (m * 60) + s)) * 100 ;  //the current time left in seconds
-  console.log(current);
-  }
+    current = (((d *86400000) + (h * 3600000 ) + (m *60000) + s *1000))  ;  //the current time left in milisec
+  const finaleDate = new Date().getTime() + current;
+
+  const timer1 = () =>{
+    const now = new Date().getTime();
+    
+    let diff = finaleDate - now;
+    console.log(diff)
+    // Showing the alert when the counter time finishes.
+    if(diff < 0){
+        document.querySelector('.alert').style.display = 'block';
+        document.querySelector('.container').style.display = 'none';
+    }
+    
+    let days = Math.floor(diff / (1000*60*60*24));
+    let hours = Math.floor(diff % (1000*60*60*24) / (1000*60*60));
+    let minutes = Math.floor(diff % (1000*60*60)/ (1000*60));
+    let seconds = Math.floor(diff % (1000*60) / 1000);
+  // Adding the zeros.
+    days <= 99 ? days = `0${days}` : days;
+    days <= 9 ? days = `00${days}` : days;
+    hours <= 9 ? hours = `0${hours}` : hours;
+    minutes <= 9 ? minutes = `0${minutes}` : minutes;
+    seconds <= 9 ? seconds = `0${seconds}` : seconds;   
+
+    document.querySelector('#days').textContent = days;
+    document.querySelector('#hours').textContent = hours;
+    document.querySelector('#minutes').textContent = minutes;
+    document.querySelector('#seconds').textContent = seconds;
+
+}
+timer1();
+// Calling the function every 1000 milliseconds.
+setInterval(timer1,1000);
+  }      
   </script>
 </body>
 </html>
