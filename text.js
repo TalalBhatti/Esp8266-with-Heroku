@@ -1,8 +1,21 @@
-const finaleDate = 120000000000;
+function timer1(){
+  var d = parseInt(document.getElementById("days").value, 0);
+  var h = parseInt(document.getElementById("hours").value, 0);
+  var m = parseInt(document.getElementById("minutes").value, 0);
+  var s = parseInt(document.getElementById("seconds").value, 0);
+
+  let current = ((d * 86400) + (h * 3600) + (m * 60) + s);  //the current time left in seconds
+  return current
+}
+
+var input_time= timer1()
+console.log(input_time)
+const finaleDate = new Date().getTime() + input_time;
+
 console.log(finaleDate)
 const timer = () =>{
     const now = new Date().getTime();
-    console.log(now)
+    // console.log(now)
     let diff = finaleDate - now;
     // Showing the alert when the counter time finishes.
     if(diff < 0){
