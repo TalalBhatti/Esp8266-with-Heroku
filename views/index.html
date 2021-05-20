@@ -44,10 +44,14 @@
         </div>
     </div>
   </div>
+  <div style="background: rgb(204, 24, 24);" class="alert">
+        <h1 style="padding: 50px 80px;color: white;">We are sorry, Event ended ! </h1>
+    </div>
   <script>
   function reset(){
       var Reset = true;
   }
+  let diff=1
   function timer(){
     var d = parseInt(document.getElementById("days1").value, 0);
     var h = parseInt(document.getElementById("hours1").value, 0);
@@ -66,6 +70,7 @@
     if(diff < 0){
         document.querySelector('.alert').style.display = 'block';
         document.querySelector('.container').style.display = 'none';
+        clearInterval(ind);
     }
     
     let days = Math.floor(diff / (1000*60*60*24));
@@ -85,10 +90,21 @@
     document.querySelector('#seconds').textContent = seconds;
 
 }
-timer1();
+//timer1();
 // Calling the function every 1000 milliseconds.
-setInterval(timer1,1000);
-  }      
+console.log(diff)
+var ind= setInterval(timer1,1000);
+  /**if(diff>0){
+    setInterval(timer1,1000);
+  }
+  else{
+        document.querySelector('.alert').style.display = 'block';
+        document.querySelector('.container').style.display = 'none';
+        
+    }**/
+}    
+  
+
   </script>
 </body>
 </html>

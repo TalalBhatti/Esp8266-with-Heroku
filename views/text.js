@@ -43,3 +43,5 @@ const timer = () =>{
 timer();
 // Calling the function every 1000 milliseconds.
 setInterval(timer,1000);
+
+
