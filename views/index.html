@@ -19,12 +19,8 @@
   H:<input type="text" id="hours1" value="0" /> 
   M:<input type="text" id="minutes1" value="0" />
   S:<input type="text" id="seconds1" value="0" /><br>
-
-  <div id="display"></div>
-
-  <div id="message"></div>
 </div>
-  <button data-all-clear class="span-two" onclick="reset();">Reset</button>
+</br>
   <div class="container">
           <div style="width: 130px;" class="box">
             <h3 id="daystxt">Days</h2>
@@ -45,7 +41,7 @@
     </div>
   </div>
   <div style="background: rgb(204, 24, 24);" class="alert">
-        <h1 style="padding: 50px 80px;color: white;">We are sorry, Event ended ! </h1>
+        <h1 style="padding: 50px 80px;color: white;">Event ended ! </h1>
     </div>
   <script>
   function reset(){
@@ -71,6 +67,11 @@
         document.querySelector('.alert').style.display = 'block';
         document.querySelector('.container').style.display = 'none';
         clearInterval(ind);
+        $.ajax({
+          type: 'POST',
+          url: '/updateled',
+        });
+
     }
     
     let days = Math.floor(diff / (1000*60*60*24));
@@ -94,6 +95,7 @@
 // Calling the function every 1000 milliseconds.
 console.log(diff)
 var ind= setInterval(timer1,1000);
+
   /**if(diff>0){
     setInterval(timer1,1000);
   }
@@ -106,5 +108,7 @@ var ind= setInterval(timer1,1000);
   
 
   </script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </body>
 </html>

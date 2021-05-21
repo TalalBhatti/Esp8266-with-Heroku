@@ -24,8 +24,9 @@ app.get('/', function(req, res) {
 
 app.post('/updateled',(req,res)=> {
   usersRef.set({
-    BUZZER: 0 
+    BUZZER: 1 
   });
+  res.redirect('/');
 })
 
 app.listen(8080);
