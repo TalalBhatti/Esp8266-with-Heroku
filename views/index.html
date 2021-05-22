@@ -3,24 +3,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Calculator</title>
-  <link href="style.css" rel="stylesheet">
+  <title>Smart Chair App</title>
   <script src="script.js" defer></script>
-  <link rel="stylesheet" href="text.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="calculator-grid">
-  TIMER
-  </div>
-<div id="countdowntimer">
-  <button id="Start" onclick="timer();">Start Timer</button>
+<h1 align="center"><b>Smart Chair For Monitoring Of Sitting Behavior</b></h1>
+<div class="container1">
+  
 
-  D:<input type="text" id="days1" value="0" /> 
+  <h3>D:<input type="text" id="days1" value="0" /> 
   H:<input type="text" id="hours1" value="0" /> 
   M:<input type="text" id="minutes1" value="0" />
-  S:<input type="text" id="seconds1" value="0" /><br>
+  S:<input type="text" id="seconds1" value="0" /></h3><br></br></br>
+  <button class="butt" onclick="timer();">Start Timer</button></br>
 </div>
-</br>
   <div class="container">
           <div style="width: 130px;" class="box">
             <h3 id="daystxt">Days</h2>
@@ -41,8 +38,26 @@
     </div>
   </div>
   <div style="background: rgb(204, 24, 24);" class="alert">
-        <h1 style="padding: 50px 80px;color: white;">Event ended ! </h1>
+        <h1 style="padding: 50px 80px;color: white;">Buzzer is On, Event Ended ! </h1>
     </div>
+
+<h5 align="center">Project name : chair monitoring for posture recognition </br>
+Names : 
+Najam ul wehdat
+Abdullah Junaid shaikh 
+Syed Ebad Hussain</h5>
+
+
+
+
+
+
+
+
+
+
+
+
   <script>
   function reset(){
       var Reset = true;
@@ -91,19 +106,8 @@
     document.querySelector('#seconds').textContent = seconds;
 
 }
-//timer1();
 // Calling the function every 1000 milliseconds.
-console.log(diff)
 var ind= setInterval(timer1,1000);
-
-  /**if(diff>0){
-    setInterval(timer1,1000);
-  }
-  else{
-        document.querySelector('.alert').style.display = 'block';
-        document.querySelector('.container').style.display = 'none';
-        
-    }**/
 }    
   
 
