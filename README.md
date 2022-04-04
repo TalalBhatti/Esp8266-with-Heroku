@@ -1,4 +1,6 @@
-# Esp8266-with-Heroku
+# Esp8266-with-Heroku and React App
+
+React App with Firebase SDK coming soon
 Prerequisites:  
   Node.js & Heroku Account
 
